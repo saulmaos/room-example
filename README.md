@@ -1,4 +1,4 @@
-# ViewModel + LiveData example
+# Room Example
 Una simple app para mostrar el uso de Room en Android con kotlin
 
 En este repositorio encontrarás los ejemplos relacionados con el curso de Room
