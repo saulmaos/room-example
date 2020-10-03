@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             application, AppDatabase::class.java, AppDatabase.DATABASE_NAME)
             .allowMainThreadQueries()
             .build()
-//        saveBooks()
+        saveBooks()
 
         btnBooks.setOnClickListener {
             val books = database.booksDao.getAllBooks()
