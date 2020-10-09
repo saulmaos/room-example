@@ -38,4 +38,16 @@
         android:title="Todos los titulos"
         app:showAsAction="never"
         tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/action_insert_authors"
+        android:title="Insertar autores"
+        app:showAsAction="never"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/action_get_authors_and_books"
+        android:title="Autores y sus libros"
+        app:showAsAction="never"
+        tools:ignore="HardcodedText" />
 </menu>

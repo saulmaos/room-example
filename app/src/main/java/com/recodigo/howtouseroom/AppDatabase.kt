@@ -6,9 +6,14 @@ import androidx.room.RoomDatabase
 /**
  * Created by SAUL on 03/10/2020.
  */
-@Database(entities = [BookEntity::class], version = 1, exportSchema = false)
+@Database(
+    entities = [BookEntity::class, AuthorEntity::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class AppDatabase: RoomDatabase() {
     abstract val booksDao: BooksDao
+    abstract val authorsDao: AuthorsDao
 
     companion object {
         const val DATABASE_NAME = "db-recodigo"

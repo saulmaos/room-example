@@ -64,6 +64,8 @@ class MainActivity : AppCompatActivity() {
             R.id.action_delete_all -> deleteAll()
             R.id.action_books_by_author -> getBooksByAuthor()
             R.id.action_all_titles -> getAllTitles()
+            R.id.action_insert_authors -> saveAuthors()
+            R.id.action_get_authors_and_books -> showAuthorsAndTheirBooks()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -98,6 +100,29 @@ class MainActivity : AppCompatActivity() {
         tvBooks.text = ""
         titles.forEach { title ->
             tvBooks.append("$title\n")
+        }
+    }
+
+    private fun saveAuthors() {
+        val authors = ArrayList<AuthorEntity>().apply {
+            add(AuthorEntity("Herman Melville", 1819, 2))
+            add(AuthorEntity("Miguel de Cervantes", 1547, 1))
+            add(AuthorEntity("F. Scott Fitzgerald", 1896, 1))
+            add(AuthorEntity("Leo Tolstoy", 1828, 1))
+        }
+        database.authorsDao.insertMany(authors)
+    }
+
+    private fun showAuthorsAndTheirBooks() {
+        val authors = database.authorsDao.getAuthorsWithMoreThanXAmountOfBooks(1)
+        tvBooks.text = ""
+        authors.forEach { author ->
+            tvBooks.append("${author.name}, ${author.yearOfBirth}, ${author.numberOfBooks}\n")
+        }
+        if (authors.isEmpty()) return
+        val booksByAuthor = database.booksDao.getBooksByAuthor(authors[0].name)
+        booksByAuthor.forEach { book ->
+            tvBooks.append("${book.id}, ${book.title}, ${book.author}, ${book.pubDate}\n")
         }
     }
 }
