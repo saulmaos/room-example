@@ -27,9 +27,9 @@ data class BookEntity(
     @NonNull
     var author: String,
 
-    @ColumnInfo(name = "pub_dates")
+    @ColumnInfo(name = "pub_date")
     @NonNull
-    var pubDate: String
+    var pubDate: Int
 ) {
 
 }

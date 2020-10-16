@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         database = Room.databaseBuilder(
             application, AppDatabase::class.java, AppDatabase.DATABASE_NAME
         )
+            .addMigrations(Migrations.MIGRATION_1_2)
             .allowMainThreadQueries()
             .build()
 
@@ -36,13 +37,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveBooks() {
-        val book1 = BookEntity(title = "Moby Dick", author = "Herman Melville", pubDate = "1851")
-        val book2 = BookEntity(title = "Taipi", author = "Herman Melville", pubDate = "1846")
+        val book1 = BookEntity(title = "Moby Dick", author = "Herman Melville", pubDate = 1851)
+        val book2 = BookEntity(title = "Taipi", author = "Herman Melville", pubDate = 1846)
         val book3 =
-            BookEntity(title = "Don Quixote", author = "Miguel de Cervantes", pubDate = "1605")
+            BookEntity(title = "Don Quixote", author = "Miguel de Cervantes", pubDate = 1605)
         val book4 =
-            BookEntity(title = "El gran Garsby", author = "F. Scott Fitzgerald", pubDate = "1925")
-        val book5 = BookEntity(title = "War and Peace", author = "Leo Tolstoy", pubDate = "1869")
+            BookEntity(title = "El gran Gatsby", author = "F. Scott Fitzgerald", pubDate = 1925)
+        val book5 = BookEntity(title = "War and Peace", author = "Leo Tolstoy", pubDate = 1869)
         database.booksDao.insert(book1)
         database.booksDao.insert(book2)
         database.booksDao.insert(book3)
